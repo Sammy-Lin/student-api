@@ -16,9 +16,11 @@ jobs:
           java-version: 11
           distribution: adopt
           cache: maven
+      - name: Clean Cache
+        run: mvn clean
 
       - name: Build with Maven
-        run: mvn clean && mvn package --file pom.xml -DskipTests
+        run: mvn package --file pom.xml -DskipTests
 
       - name: List build directory
         run: ls -l target/
