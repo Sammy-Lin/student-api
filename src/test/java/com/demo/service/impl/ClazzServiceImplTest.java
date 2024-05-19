@@ -175,7 +175,7 @@ class ClazzServiceImplTest {
     @Test
     void delClazzs() throws BusinessException {
         long clazzId = 45L;
-        clazzService.delClazzs(List.of(clazzId));
+        clazzService.delClazzs(Arrays.asList(clazzId));
 
         Optional<Clazz> byId = clazzDao.findById(clazzId);
         assertNull(byId.orElse(null));

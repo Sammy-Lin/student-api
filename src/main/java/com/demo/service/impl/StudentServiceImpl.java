@@ -83,7 +83,7 @@ public class StudentServiceImpl implements StudentService {
             throw new BusinessException("参数为空");
         }
         Optional<Student> oldStudent = studentDao.findById(updateStudentDTO.getId());
-        if (oldStudent.isEmpty()) {
+        if (!oldStudent.isPresent()) {
             throw new BusinessException("数据已修改");
         }
         Student updateStudent = new Student();

@@ -83,7 +83,7 @@ public class ClazzServiceImpl implements ClazzService {
         Clazz clazz = new Clazz();
         if (ObjectUtils.isEmpty(old)) {
             Optional<Clazz> oldClazz = clazzDao.findById(updateClazzDTO.getId());
-            if (oldClazz.isEmpty()) {
+            if (!oldClazz.isPresent()) {
                 throw new BusinessException("数据已修改");
             }
             old = oldClazz.get();
