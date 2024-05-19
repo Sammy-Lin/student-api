@@ -18,7 +18,7 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        run: mvn package --file pom.xml -DskipTests
+        run: mvn clean && mvn package --file pom.xml -DskipTests
 
       - name: List build directory
         run: ls -l target/
