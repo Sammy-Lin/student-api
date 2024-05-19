@@ -21,7 +21,7 @@ jobs:
         run: mvn package --file pom.xml -DskipTests
 
       - name: Print Path
-        run: echo %cd%
+        run: pwd
 
       - name: Run Project
         run: java -jar ./target/student-api-1.0-SNAPSHOT.jar
