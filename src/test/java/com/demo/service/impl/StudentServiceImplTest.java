@@ -64,17 +64,6 @@ class StudentServiceImplTest {
     }
 
     @Test
-    void add10Students() throws BusinessException {
-        Random random = new Random();
-        for (int i = 21; i <= 25; i++) {
-            AddStudentDTO addStudentDTO = new AddStudentDTO();
-            addStudentDTO.setName("Test" + i);
-            addStudentDTO.setGender(random.nextBoolean());
-            Student student = studentService.addStudent(addStudentDTO);
-        }
-    }
-
-    @Test
     void testUpdateStudent() throws BusinessException {
         UpdateStudentDTO updateStudentDTO = new UpdateStudentDTO();
         long clazzId = 45L;

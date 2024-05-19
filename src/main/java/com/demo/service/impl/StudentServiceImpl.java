@@ -27,25 +27,38 @@ public class StudentServiceImpl implements StudentService {
     @Resource
     private StudentDao studentDao;
 
+    /**
+     * Student list service
+     * @param current current page number
+     * @param pageSize size per page
+     * @return
+     * @throws BusinessException
+     */
     @Override
-    public HashMap<String, Object> listStudents(Integer currentPage, Integer pageSize) throws BusinessException {
-        if (currentPage == null || currentPage < 0 || pageSize == null || pageSize < 1) {
+    public HashMap<String, Object> listStudents(Integer current, Integer pageSize) throws BusinessException {
+        if (current == null || current < 0 || pageSize == null || pageSize < 1) {
             throw new BusinessException("参数错误");
         }
-        Page<StudentVO> studentPage = studentDao.getStudentPageData(PageRequest.of(currentPage - 1, pageSize));
+        Page<StudentVO> studentPage = studentDao.getStudentPageData(PageRequest.of(current - 1, pageSize));
         HashMap<String, Object> pageResult = new HashMap<>();
         pageResult.put("total", studentPage.getTotalElements());
         pageResult.put("list", studentPage.getContent());
         return pageResult;
     }
 
+    /**
+     * add Student service
+     * @param addStudentDTO add Student entity
+     * @return
+     * @throws BusinessException
+     */
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Student addStudent(AddStudentDTO addStudentDTO) throws BusinessException {
-        boolean valid = ObjectUtils.isEmpty(addStudentDTO) ||
+        boolean invalid = ObjectUtils.isEmpty(addStudentDTO) ||
                 !StringUtils.hasText(addStudentDTO.getName()) ||
                 ObjectUtils.isEmpty(addStudentDTO.getGender());
-        if (valid) {
+        if (invalid) {
             throw new BusinessException("参数为空");
         }
         Student savedStudent = new Student();
@@ -54,6 +67,12 @@ public class StudentServiceImpl implements StudentService {
         return savedStudent;
     }
 
+    /**
+     * update Student API
+     * @param updateStudentDTO update Student entity
+     * @return
+     * @throws BusinessException
+     */
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Student updateStudent(UpdateStudentDTO updateStudentDTO) throws BusinessException {
@@ -74,6 +93,12 @@ public class StudentServiceImpl implements StudentService {
         return updateStudent;
     }
 
+    /**
+     * delete Student service
+     * @param ids   Student Ids
+     * @return
+     * @throws BusinessException
+     */
     @Override
     public void delStudents(List<Long> ids) throws BusinessException {
         if (CollectionUtils.isEmpty(ids)) {
