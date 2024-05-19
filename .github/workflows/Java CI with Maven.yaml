@@ -21,12 +21,6 @@ jobs:
 
       - name: Build with Maven
         run: mvn package --file pom.xml -DskipTests
-
-      - name: List build directory
-        run: ls -l target/
-
-      - name: Check Java version
-        run: java --version
       
       - name: Run Project
         run: java -jar target/student-api-1.0-SNAPSHOT.jar
