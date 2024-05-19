@@ -20,8 +20,11 @@ jobs:
       - name: Build with Maven
         run: mvn package --file pom.xml -DskipTests
 
-      - name: Print Path
-        run: pwd
+      - name: List build directory
+        run: ls -l target/
 
+      - name: List build directory2
+        run: ls -l ./target/
+      
       - name: Run Project
         run: java -jar target/student-api-1.0-SNAPSHOT.jar
