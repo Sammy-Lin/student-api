@@ -14,7 +14,6 @@ jobs:
         uses: actions/setup-java@v3  # 使用actions/setup-java@v3来设置JDK
         with:
           java-version: 11
-          distribution: 'HotSpot'
           cache: maven
 
       - name: Build with Maven
