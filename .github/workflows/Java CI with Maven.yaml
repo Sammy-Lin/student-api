@@ -21,4 +21,4 @@ jobs:
         run: mvn package --file pom.xml -DskipTests
 
       - name: Run Project
-        run: java -jar student-api-1.0-SNAPSHOT.jar
+        run: java -jar ./target/student-api-1.0-SNAPSHOT.jar
