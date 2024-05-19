@@ -58,7 +58,7 @@
             <configuration>
                 <archive>
                     <manifest>
-                        <mainClass>YourMainClass</mainClass>
+                        <mainClass>com.demo.StudentApiApp</mainClass>
                     </manifest>
                 </archive>
             </configuration>
