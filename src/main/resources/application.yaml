@@ -5,7 +5,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/student_demo
     username: root
-    password: 123456
+    password: APJ_20240501
   jpa:
     database: MYSQL
     show-sql: true
